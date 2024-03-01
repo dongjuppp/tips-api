@@ -5,18 +5,19 @@ import jakarta.persistence.*
 import java.time.LocalDateTime
 
 @Entity(name = "tips_user")
-class User(password: String,
+class User(account: String,
+           password: String,
            firstName: String,
            lastName: String,
            userStatus: UserStatus,
            createdAt: LocalDateTime,
-           modifiedAt: LocalDateTime) {
+           modifiedAt: LocalDateTime? = null) {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null
 
-    val account: String = ""
+    val account: String = account
 
     @JsonIgnore
     var password: String = password
@@ -30,7 +31,7 @@ class User(password: String,
 
     var createdAt: LocalDateTime = createdAt
 
-    var modifiedAt: LocalDateTime = modifiedAt
+    var modifiedAt: LocalDateTime? = modifiedAt
 }
 
 enum class UserStatus(val status: String, val description: String) {

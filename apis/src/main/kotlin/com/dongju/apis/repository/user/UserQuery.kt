@@ -2,6 +2,7 @@ package com.dongju.apis.repository.user
 
 import com.dongju.apis.entity.QUser.user
 import com.dongju.apis.entity.User
+import com.dongju.apis.entity.UserStatus
 import com.querydsl.jpa.impl.JPAQueryFactory
 import org.springframework.stereotype.Repository
 
@@ -16,6 +17,14 @@ class UserQuery(val jpaQueryFactory: JPAQueryFactory,
     fun findById(id: Long): User {
         return jpaQueryFactory.selectFrom(user)
                 .where(user.id.eq(id))
+                .fetchFirst()
+    }
+
+    fun findByAccountAndPassword(account: String, password: String): User {
+        return jpaQueryFactory.selectFrom(user)
+                .where(user.account.eq(account))
+                .where(user.password.eq(password))
+                .where(user.status.eq(UserStatus.Active))
                 .fetchFirst()
     }
 
