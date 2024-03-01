@@ -6,6 +6,7 @@ plugins {
 	kotlin("jvm") version "1.9.22"
 	kotlin("plugin.spring") version "1.9.22"
 	kotlin("plugin.jpa") version "1.9.22"
+	kotlin("kapt") version "1.9.22"
 }
 
 group = "com.dongju"
@@ -37,6 +38,9 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 
 	runtimeOnly("com.mysql:mysql-connector-j")
+	implementation("com.querydsl:querydsl-jpa:5.0.0:jakarta")
+
+	kapt("com.querydsl:querydsl-apt:5.0.0:jakarta")
 }
 
 tasks.withType<KotlinCompile> {
