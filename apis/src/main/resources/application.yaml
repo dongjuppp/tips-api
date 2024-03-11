@@ -5,7 +5,7 @@ spring:
   datasource:
     hikari:
       username: dongju
-      password: dbsdk93!
+      password: 
 #            jdbc-url: jdbc:mysql://host.docker.internal:3306/fake_book
       jdbc-url: jdbc:mysql://localhost:3306/fake_book
       driver-class-name: com.mysql.cj.jdbc.Driver
